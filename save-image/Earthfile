@@ -1,0 +1,5 @@
+FROM alpine:3.13
+
+saveimage:
+    RUN echo data > data
+    SAVE IMAGE earthly-test-saveimage:test
