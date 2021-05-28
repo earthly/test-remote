@@ -1,0 +1,58 @@
+
+
+test:
+    FROM --platform=linux/amd64 alpine:3.13
+    ARG EARTHLY_TARGET
+    RUN echo "EARTHLY_TARGET=$EARTHLY_TARGET"
+    RUN test "$EARTHLY_TARGET" = "github.com/earthly/test-builtin-args/subdir:main+test"
+    ARG EARTHLY_TARGET_PROJECT
+    RUN echo "EARTHLY_TARGET_PROJECT=$EARTHLY_TARGET_PROJECT"
+    RUN test "$EARTHLY_TARGET_PROJECT" = "github.com/earthly/test-builtin-args/subdir:main"
+    ARG EARTHLY_TARGET_PROJECT_NO_TAG
+    RUN echo "EARTHLY_TARGET_PROJECT_NO_TAG=$EARTHLY_TARGET_PROJECT_NO_TAG"
+    RUN test "$EARTHLY_TARGET_PROJECT_NO_TAG" = "github.com/earthly/test-builtin-args/subdir"
+    ARG EARTHLY_TARGET_NAME
+    RUN echo "EARTHLY_TARGET_NAME=$EARTHLY_TARGET_NAME"
+    RUN test "$EARTHLY_TARGET_NAME" = "test"
+    ARG EARTHLY_TARGET_TAG
+    RUN echo "EARTHLY_TARGET_TAG=$EARTHLY_TARGET_TAG"
+    RUN test "$EARTHLY_TARGET_TAG" = "main"
+    ARG EARTHLY_TARGET_TAG_DOCKER
+    RUN echo "EARTHLY_TARGET_TAG_DOCKER=$EARTHLY_TARGET_TAG_DOCKER"
+    RUN test "$EARTHLY_TARGET_TAG_DOCKER" = "main"
+    ARG EARTHLY_GIT_HASH
+    RUN echo "EARTHLY_GIT_HASH=$EARTHLY_GIT_HASH"
+    RUN test -n "$EARTHLY_GIT_HASH"
+    ARG EARTHLY_GIT_BRANCH
+    RUN echo "EARTHLY_GIT_BRANCH=$EARTHLY_GIT_BRANCH"
+    RUN test -n "$EARTHLY_GIT_BRANCH"
+    ARG EARTHLY_GIT_TAG
+    RUN echo "EARTHLY_GIT_TAG=$EARTHLY_GIT_TAG"
+    # TODO: This is inconsistent because buildkit uses a tag with the same name
+    #       of the branch that is being checked out. However, when running locally,
+    #       it doesn't work the same.
+    RUN test "$EARTHLY_GIT_TAG" = "" || \
+        test "$EARTHLY_GIT_TAG" = "main"
+    ARG EARTHLY_GIT_ORIGIN_URL
+    RUN echo "EARTHLY_GIT_ORIGIN_URL=$EARTHLY_GIT_ORIGIN_URL"
+    RUN test "$EARTHLY_GIT_ORIGIN_URL" = "git@github.com:earthly/test-builtin-args.git" || \
+        test "$EARTHLY_GIT_ORIGIN_URL" = "https://github.com/earthly/test-builtin-args.git"
+    ARG EARTHLY_GIT_ORIGIN_URL_SCRUBBED
+    RUN echo "EARTHLY_GIT_ORIGIN_URL_SCRUBBED=$EARTHLY_GIT_ORIGIN_URL_SCRUBBED"
+    RUN test "$EARTHLY_GIT_ORIGIN_URL_SCRUBBED" = "git@github.com:earthly/test-builtin-args.git" || \
+        test "$EARTHLY_GIT_ORIGIN_URL_SCRUBBED" = "https://github.com/earthly/test-builtin-args.git"
+    ARG EARTHLY_GIT_PROJECT_NAME
+    RUN echo "EARTHLY_GIT_PROJECT_NAME=$EARTHLY_GIT_PROJECT_NAME"
+    RUN test "$EARTHLY_GIT_PROJECT_NAME" = "earthly/test-builtin-args"
+    ARG TARGETPLATFORM
+    RUN echo "TARGETPLATFORM=$TARGETPLATFORM"
+    RUN test "$TARGETPLATFORM" = "linux/amd64"
+    ARG TARGETOS
+    RUN echo "TARGETOS=$TARGETOS"
+    RUN test "$TARGETOS" = "linux"
+    ARG TARGETARCH
+    RUN echo "TARGETARCH=$TARGETARCH"
+    RUN test "$TARGETARCH" = "amd64"
+    ARG TARGETVARIANT
+    RUN echo "TARGETVARIANT=$TARGETVARIANT"
+    RUN test "$TARGETVARIANT" = ""
