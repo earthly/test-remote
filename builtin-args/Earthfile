@@ -4,13 +4,13 @@ test:
     FROM --platform=linux/amd64 alpine:3.13
     ARG EARTHLY_TARGET
     RUN echo "EARTHLY_TARGET=$EARTHLY_TARGET"
-    RUN test "$EARTHLY_TARGET" = "github.com/earthly/test-builtin-args/subdir:main+test"
+    RUN test "$EARTHLY_TARGET" = "github.com/earthly/test-remote/builtin-args:main+test"
     ARG EARTHLY_TARGET_PROJECT
     RUN echo "EARTHLY_TARGET_PROJECT=$EARTHLY_TARGET_PROJECT"
-    RUN test "$EARTHLY_TARGET_PROJECT" = "github.com/earthly/test-builtin-args/subdir:main"
+    RUN test "$EARTHLY_TARGET_PROJECT" = "github.com/earthly/test-remote/builtin-args:main"
     ARG EARTHLY_TARGET_PROJECT_NO_TAG
     RUN echo "EARTHLY_TARGET_PROJECT_NO_TAG=$EARTHLY_TARGET_PROJECT_NO_TAG"
-    RUN test "$EARTHLY_TARGET_PROJECT_NO_TAG" = "github.com/earthly/test-builtin-args/subdir"
+    RUN test "$EARTHLY_TARGET_PROJECT_NO_TAG" = "github.com/earthly/test-remote/builtin-args"
     ARG EARTHLY_TARGET_NAME
     RUN echo "EARTHLY_TARGET_NAME=$EARTHLY_TARGET_NAME"
     RUN test "$EARTHLY_TARGET_NAME" = "test"
@@ -35,15 +35,15 @@ test:
         test "$EARTHLY_GIT_TAG" = "main"
     ARG EARTHLY_GIT_ORIGIN_URL
     RUN echo "EARTHLY_GIT_ORIGIN_URL=$EARTHLY_GIT_ORIGIN_URL"
-    RUN test "$EARTHLY_GIT_ORIGIN_URL" = "git@github.com:earthly/test-builtin-args.git" || \
-        test "$EARTHLY_GIT_ORIGIN_URL" = "https://github.com/earthly/test-builtin-args.git"
+    RUN test "$EARTHLY_GIT_ORIGIN_URL" = "git@github.com:earthly/test-remote.git" || \
+        test "$EARTHLY_GIT_ORIGIN_URL" = "https://github.com/earthly/test-remote.git"
     ARG EARTHLY_GIT_ORIGIN_URL_SCRUBBED
     RUN echo "EARTHLY_GIT_ORIGIN_URL_SCRUBBED=$EARTHLY_GIT_ORIGIN_URL_SCRUBBED"
-    RUN test "$EARTHLY_GIT_ORIGIN_URL_SCRUBBED" = "git@github.com:earthly/test-builtin-args.git" || \
-        test "$EARTHLY_GIT_ORIGIN_URL_SCRUBBED" = "https://github.com/earthly/test-builtin-args.git"
+    RUN test "$EARTHLY_GIT_ORIGIN_URL_SCRUBBED" = "git@github.com:earthly/test-remote.git" || \
+        test "$EARTHLY_GIT_ORIGIN_URL_SCRUBBED" = "https://github.com/earthly/test-remote.git"
     ARG EARTHLY_GIT_PROJECT_NAME
     RUN echo "EARTHLY_GIT_PROJECT_NAME=$EARTHLY_GIT_PROJECT_NAME"
-    RUN test "$EARTHLY_GIT_PROJECT_NAME" = "earthly/test-builtin-args"
+    RUN test "$EARTHLY_GIT_PROJECT_NAME" = "earthly/test-remote"
     ARG TARGETPLATFORM
     RUN echo "TARGETPLATFORM=$TARGETPLATFORM"
     RUN test "$TARGETPLATFORM" = "linux/amd64"
