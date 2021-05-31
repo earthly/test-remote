@@ -1,0 +1,7 @@
+VERSION --referenced-save-only 0.5
+
+FROM alpine:3.13
+
+savelocal:
+    RUN echo data > data
+    SAVE ARTIFACT data AS LOCAL ./output/testfile
