@@ -3,3 +3,7 @@ FROM alpine:3.13
 savelocal:
     RUN echo data > data
     SAVE ARTIFACT data AS LOCAL ./output/testfile
+
+copy-from-savelocal:
+    COPY +savelocal/data .
+    RUN test $(md5sum data | awk '{print $1}') = "6137cde4893c59f76f005a8123d8e8e6"
