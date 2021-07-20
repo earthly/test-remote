@@ -1,0 +1,6 @@
+FROM alpine:3.13
+
+saveimageandartifact:
+    RUN echo a119f6a9-9749-4035-8647-48d48bb6a361 > saveimageandartifact-data
+    SAVE ARTIFACT saveimageandartifact-data
+    SAVE IMAGE earthly-test-saveimage-and-artifact:test
