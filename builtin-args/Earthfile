@@ -4,7 +4,7 @@ test:
     FROM --platform=linux/amd64 alpine:3.13
     ARG EARTHLY_TARGET
     RUN echo "EARTHLY_TARGET=$EARTHLY_TARGET"
-    RUN test "$EARTHLY_TARGET" = "github.com/earthly/test-remote/builtin-args:main+vlad/add-ts-tests"
+    RUN test "$EARTHLY_TARGET" = "github.com/earthly/test-remote/builtin-args:vlad/add-ts-tests+test"
     ARG EARTHLY_TARGET_PROJECT
     RUN echo "EARTHLY_TARGET_PROJECT=$EARTHLY_TARGET_PROJECT"
     RUN test "$EARTHLY_TARGET_PROJECT" = "github.com/earthly/test-remote/builtin-args:vlad/add-ts-tests"
