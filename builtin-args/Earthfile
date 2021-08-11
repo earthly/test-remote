@@ -4,10 +4,10 @@ test:
     FROM --platform=linux/amd64 alpine:3.13
     ARG EARTHLY_TARGET
     RUN echo "EARTHLY_TARGET=$EARTHLY_TARGET"
-    RUN test "$EARTHLY_TARGET" = "github.com/earthly/test-remote/builtin-args:main+vlad/add-ts-tests"
+    RUN test "$EARTHLY_TARGET" = "github.com/earthly/test-remote/builtin-args:main+test"
     ARG EARTHLY_TARGET_PROJECT
     RUN echo "EARTHLY_TARGET_PROJECT=$EARTHLY_TARGET_PROJECT"
-    RUN test "$EARTHLY_TARGET_PROJECT" = "github.com/earthly/test-remote/builtin-args:vlad/add-ts-tests"
+    RUN test "$EARTHLY_TARGET_PROJECT" = "github.com/earthly/test-remote/builtin-args:main"
     ARG EARTHLY_TARGET_PROJECT_NO_TAG
     RUN echo "EARTHLY_TARGET_PROJECT_NO_TAG=$EARTHLY_TARGET_PROJECT_NO_TAG"
     RUN test "$EARTHLY_TARGET_PROJECT_NO_TAG" = "github.com/earthly/test-remote/builtin-args"
@@ -16,10 +16,10 @@ test:
     RUN test "$EARTHLY_TARGET_NAME" = "test"
     ARG EARTHLY_TARGET_TAG
     RUN echo "EARTHLY_TARGET_TAG=$EARTHLY_TARGET_TAG"
-    RUN test "$EARTHLY_TARGET_TAG" = "vlad/add-ts-tests"
+    RUN test "$EARTHLY_TARGET_TAG" = "main"
     ARG EARTHLY_TARGET_TAG_DOCKER
     RUN echo "EARTHLY_TARGET_TAG_DOCKER=$EARTHLY_TARGET_TAG_DOCKER"
-    RUN test "$EARTHLY_TARGET_TAG_DOCKER" = "vlad_add-ts-tests"
+    RUN test "$EARTHLY_TARGET_TAG_DOCKER" = "main"
     ARG EARTHLY_GIT_HASH
     RUN echo "EARTHLY_GIT_HASH=$EARTHLY_GIT_HASH"
     RUN test -n "$EARTHLY_GIT_HASH"
@@ -32,7 +32,7 @@ test:
     #       of the branch that is being checked out. However, when running locally,
     #       it doesn't work the same.
     RUN test "$EARTHLY_GIT_TAG" = "" || \
-        test "$EARTHLY_GIT_TAG" = "vlad/add-ts-tests"
+        test "$EARTHLY_GIT_TAG" = "main"
     ARG EARTHLY_GIT_ORIGIN_URL
     RUN echo "EARTHLY_GIT_ORIGIN_URL=$EARTHLY_GIT_ORIGIN_URL"
     RUN test "$EARTHLY_GIT_ORIGIN_URL" = "git@github.com:earthly/test-remote.git" || \
