@@ -1,4 +1,4 @@
-
+VERSION 0.6
 
 test:
     FROM --platform=linux/amd64 alpine:3.13
