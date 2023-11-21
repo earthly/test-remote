@@ -1,0 +1,13 @@
+VERSION 0.7
+
+create-dockerfile:
+    FROM alpine:3.18
+    RUN mkdir dist
+    RUN echo "
+FROM alpine:3.18
+ARG my_arg=default
+RUN echo \${my_arg}
+RUN echo \${my_arg} >/arg-value
+" > dist/Dockerfile
+    RUN cat dist/Dockerfile
+    SAVE ARTIFACT dist/*
