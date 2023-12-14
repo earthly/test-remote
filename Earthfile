@@ -7,4 +7,4 @@ basic:
 basic-file:
     FROM alpine
     RUN echo "Hello World" > file
-    SAVE ARTIFACT file AS file 
+    SAVE ARTIFACT file
