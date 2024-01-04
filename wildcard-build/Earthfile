@@ -1,0 +1,5 @@
+VERSION --wildcard-builds 0.8
+
+wildcard-build:
+    FROM alpine
+    BUILD ./subdir/*+test
