@@ -3,3 +3,7 @@ VERSION --wildcard-builds 0.8
 wildcard-build:
     FROM alpine
     BUILD ./subdir/*+test
+
+wildcard-glob:
+    FROM alpine
+    BUILD ./subdir/b*[rz]+test
